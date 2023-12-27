@@ -7,7 +7,7 @@ body {
     color: #fff; /* Default text color for light mode */
 }
 
-body.bootstrap-dark-mode {
+body.bg-dark {
     background-color: #212529;
     color: #fff; /* Text color for dark mode */
 }
@@ -54,12 +54,12 @@ body.bootstrap-dark-mode {
 }
 
 
-body.bootstrap-dark-mode .tracker-form {
+body.bg-dark .tracker-form {
     background-color: #343a40;
     color: #fff;
 }
 /* Dark mode style for form button */
-body.bootstrap-dark-mode .form-button {
+body.bg-dark .form-button {
     background-color: #007bff; /* Use the same color as light mode */
     color: #fff;
 }
