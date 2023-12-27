@@ -1,0 +1,51 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Push-up Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/index.css">
+
+</head>
+<body class="bootstrap-dark-mode"> <!-- Add a class for Bootstrap light mode -->
+
+    <div class="container">
+        <h1 class="tracker-header">Elongation Push-up Tracker</h1>
+
+        <form action="/pushup/record" method="post" class="tracker-form">
+            <label for="username" class="form-label">Select your name:</label>
+            <select id="username" name="username" class="form-select" required>
+                <!-- Add options dynamically based on your user list -->
+                <% users.forEach((user) => { %>
+                    <option value="<%= user.name %>"><%= user.name %></option>
+                <% }); %>
+            </select>
+
+            <label for="pushups" class="form-label">Enter your push-ups:</label>
+            <input type="number" name="pushups" class="form-input" required>
+
+            <button type="submit" class="form-button">Record</button>
+
+            <!-- Add a button for toggling dark mode -->
+            <button id="toggleDarkMode" class="btn btn-secondary">Toggle Dark Mode</button>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-eA7CfeJAOy6kUn6YzwnJH2pL7UnDF2B+9ujMAeTOM7bNHL1zAPK3QGS9hYQ2wbqR" crossorigin="anonymous"></script>
+
+    <!-- Add a script for toggling dark mode -->
+    <script>
+        const toggleDarkModeButton = document.getElementById('toggleDarkMode');
+        const body = document.body;
+
+        toggleDarkModeButton.addEventListener('click', () => {
+            body.classList.toggle('bootstrap-light-mode');
+            body.classList.toggle('bootstrap-dark-mode');
+        });
+    </script>
+</body>
+</html>

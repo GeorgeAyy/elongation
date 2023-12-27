@@ -1,0 +1,21 @@
+body {
+    padding: 20px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease; /* Add a smooth transition for background color change */
+    color: #343a40; /* Default text color for light mode */
+}
+
+body.bg-dark {
+    background-color: #343a40;
+    color: #fff; /* Text color for dark mode */
+}
+
+body.bg-dark .card-body {
+    background-color: #343a40;
+    color: #fff;
+}
+/* Dark mode style for form button */
+body.bootstrap-dark-mode .form-button {
+    background-color: #007bff; /* Use the same color as light mode */
+    color: #fff;
+}
