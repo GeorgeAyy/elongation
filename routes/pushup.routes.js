@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 
 // Handle the push-up recording form submission
 router.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    res.locals.currentUrl = req.path;
   if (req.session.user) {
+    
     next();
   } else {
     res.redirect("/login");
@@ -60,7 +63,7 @@ router.get("/leaderboard", async (req, res) => {
     // Sort the leaderboard by total push-ups in descending order
     results.sort((a, b) => b.totalPushups - a.totalPushups);
 
-    res.render("leaderboard", { leaderboard: results });
+    res.render("leaderboard", { leaderboard: results, user: req.session.user });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

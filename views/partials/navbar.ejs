@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Elongation Push Ups</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <% if (user) { %>
+
+          <li class="nav-item">
+            <a class="nav-link <%= currentUrl === '/' ? 'active' : '' %>" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= currentUrl === '/profile' ? 'active' : '' %>" href="/profile">Profile</a>
+          </li>
+            <% } %>
+        </ul>
+        <% if (user) { %>
+            <a class="nav-link <%= currentUrl === '/logout' ? 'active' : '' %>" href="/logout">Logout</a>
+        </a>
+        <% } else { %>
+        <a class="nav-link">
+            <a class="nav-link <%= currentUrl === '/login' ? 'active' : '' %>" href="/login">Login</a>
+        </a>
+        <% } %>
+        <% if (user) { %>
+          <input type="hidden" id="user" value="<%= user._id %>">
+        <% } %>
+      </div>
+    </div>
+  </nav>
+  
+  <script>
+    // Get the current page URL
+    const currentUrl = window.location.pathname;
+  
+    // Function to manually set the "active" class for the navigation elements
+    function setActiveNavigation() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (currentUrl === linkHref) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  
+    // Call the function to set the "active" class on page load
+    setActiveNavigation();
+  </script>
+  
