@@ -35,7 +35,7 @@ router.post("/record", async (req, res) => {
         await pushupEntry.save();
       }
   
-      res.redirect("/pushup/leaderboard");
+      res.redirect("/");
     } catch (error) {
       console.error(error);
       res.status(500).send("Internal Server Error");

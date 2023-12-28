@@ -19,3 +19,47 @@ body.bootstrap-dark-mode .form-button {
     background-color: #007bff; /* Use the same color as light mode */
     color: #fff;
 }
+
+body.bg-dark .nav-link {
+    color: #fff;
+  }
+  
+  body.bg-dark .navbar-brand {
+    color: #fff;
+  }
+  
+  body.bg-dark .navbar-nav .nav-link.active {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  body.bg-dark .nav-link:hover {
+    color: gray;
+  }
+  
+  body.bg-light .tracker-header {
+    color: #212529;
+  }
+  
+  body.bg-light .tracker-form {
+    background-color: #fff;
+    color: #212529;
+  }
+  
+  body.bg-light .leaderboard-header {
+    color: #212529;
+  }
+  body.bg-light .navbar-nav .nav-link.active {
+    color: #212529;
+  
+    font-weight: bold;
+  }
+  
+  body.bg-light .nav-link{
+    color: #000000;
+  }
+  
+  body.bg-light .nav-link:hover{
+    color: gray;
+  }
+  
