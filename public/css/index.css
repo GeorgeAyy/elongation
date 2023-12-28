@@ -1,65 +1,146 @@
 /* styles.css */
 
 body {
-    padding: 20px;
-    background-color: #212529;
-    transition: background-color 0.3s ease; /* Add a smooth transition for background color change */
-    color: #fff; /* Default text color for light mode */
+  padding: 20px;
+  background-color: #212529;
+  transition: background-color 0.3s ease; /* Add a smooth transition for background color change */
+  color: #fff; /* Default text color for light mode */
 }
 
 body.bg-dark {
-    background-color: #212529;
-    color: #fff; /* Text color for dark mode */
+  background-color: #212529;
+  color: #fff; /* Text color for dark mode */
 }
 
 .container {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .tracker-header {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .tracker-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease; /* Add a smooth transition for background color change */   
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease; /* Add a smooth transition for background color change */
 }
 
 .form-label {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .form-input,
 .form-select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
 }
 
 .form-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-
 body.bg-dark .tracker-form {
-    background-color: #343a40;
-    color: #fff;
+  background-color: #343a40;
+  color: #fff;
 }
 /* Dark mode style for form button */
 body.bg-dark .form-button {
-    background-color: #007bff; /* Use the same color as light mode */
+  background-color: #007bff; /* Use the same color as light mode */
+  color: #fff;
+}
+
+body.bg-dark .nav-link {
+  color: #fff;
+}
+
+body.bg-dark .navbar-brand {
+  color: #fff;
+}
+
+body.bg-dark .navbar-nav .nav-link.active {
+  color: #fff;
+  font-weight: bold;
+}
+
+body.bg-dark .nav-link:hover {
+  color: gray;
+}
+
+body.bg-light .tracker-header {
+  color: #212529;
+}
+
+body.bg-light .tracker-form {
+  background-color: #fff;
+  color: #212529;
+}
+
+body.bg-light .leaderboard-header {
+  color: #212529;
+}
+body.bg-light .navbar-nav .nav-link.active {
+  color: #212529;
+
+  font-weight: bold;
+}
+
+body.bg-light .nav-link{
+  color: #000000;
+}
+
+body.bg-light .nav-link:hover{
+  color: gray;
+}
+
+
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+}
+
+.leaderboard-item {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.leaderboard-item span {
+    font-weight: bold;
+}
+
+.badge-pill {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10rem;
+}
+
+.badge-primary {
     color: #fff;
+    background-color: #007bff;
 }
