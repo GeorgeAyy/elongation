@@ -3,38 +3,52 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const dotenv = require("dotenv");
+const WebSocket = require('ws'); // Import WebSocket module
 
-// Load environment variables from a .env file
 dotenv.config();
 
-// Create an Express application
 const app = express();
+const server = app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on http://localhost:${server.address().port}`);
+});
 
-// Set the port for the server to listen on, default to 3000 if not specified
-const PORT = process.env.PORT || 3000;
+// Set up WebSocket server
+const wss = new WebSocket.Server({ noServer: true });
+app.set('wss', wss);
+const clients = new Set();
+
+wss.on('connection', (ws) => {
+  clients.add(ws);
+
+  ws.on('close', () => {
+    clients.delete(ws);
+  });
+});
 
 // Middleware configuration
-app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
-app.use(express.static("public")); // Serve static files from the "public" directory
-app.set("view engine", "ejs"); // Set the view engine to EJS
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.set("view engine", "ejs");
 app.use(
   session({
-    secret: process.env.secretkey, // Replace with a secret key
+    secret: process.env.secretkey,
     resave: false,
     saveUninitialized: true,
   })
 );
 
 // MongoDB connection
-mongoose.connect(process.env.mongo_uri); // Replace with your MongoDB connection string
+mongoose.connect(process.env.mongo_uri);
 
 // Middleware to check if the user is authenticated (You can add this middleware here)
 
 // Routes configuration
-app.use("/", require("./routes/index.routes")); // Mount the index routes
-app.use("/pushup", require("./routes/pushup.routes")); // Mount the pushup routes
+app.use("/", require("./routes/index.routes"));
+app.use("/pushup", require("./routes/pushup.routes"));
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// Upgrade HTTP to WebSocket for existing server
+server.on('upgrade', (request, socket, head) => {
+  wss.handleUpgrade(request, socket, head, (ws) => {
+    wss.emit('connection', ws, request);
+  });
 });
